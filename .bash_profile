@@ -11,7 +11,8 @@ BLUE="\e[0;34m"
 MAGENTA="\e[0;35m"
 NONE="\e[0m"
 
-source /usr/local/git/contrib/completion/git-completion.bash
+source ~/.git_completion.bash
+source ~/.git_prompt.sh
 PROMPT_COMMAND='exitStatus=$?; echo -ne "\033]0; ${PWD##*/}\007"'
 PS_CONDITIONAL_VIRTUALENV='$([[ "$VIRTUAL_ENV" ]] && echo "\['$MAGENTA'\][$(basename $VIRTUAL_ENV)]")'
 PS_CONDITIONAL_GIT_BRANCH='$(__git_ps1 "(%s)")'
