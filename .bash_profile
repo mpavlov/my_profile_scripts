@@ -41,7 +41,7 @@ alias pwdworkon='VENV=$(basename "$PWD") && ((lsvirtualenv -b | grep "$VENV") ||
 # general dev paths
 export GITHUB_HOST=github.wgenhq.net
 export PYNEST=/opt/wgen/
-export PYTHONSTARTUP=~/.pystartup
+#export PYTHONSTARTUP=~/.pystartup  # enable if startup scripts desired
 export PYTHONPATH=~/bin/python
 export PIP_FIND_LINKS='http://packages.wgenhq.net/pynest'
 
@@ -54,7 +54,7 @@ export PATH=$PATH:~/bin:~/bin/disco
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export WORKON_HOME=~/.virtualenvs
 export PROJECT_HOME=~/dev
-#export VIRTUALENVWRAPPER_HOOK_DIR=$WORKON_HOME
+#export VIRTUALENVWRAPPER_HOOK_DIR=$WORKON_HOME  # no longer needed in new version of virtualenv?
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
