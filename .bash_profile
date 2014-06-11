@@ -72,4 +72,4 @@ highlight() {
 #PATH=$HOME/anaconda/bin:$PATH
 
 # ssh agent
-ssh-add ~/.ssh/id_rsa
+[[ "$SSH_CLIENT" ]] || ssh-add ~/.ssh/id_rsa
