@@ -14,10 +14,11 @@ NONE="\e[0m"
 source ~/.git_completion.bash
 source ~/.git_prompt.sh
 PROMPT_COMMAND='exitStatus=$?; echo -ne "\033]0; ${PWD##*/}\007"'
+PS_HOST_COLOR=$([[ "$SSH_CLIENT" ]] && echo "\[$RED\]" || echo "\[$GREEN\]")
 PS_CONDITIONAL_VIRTUALENV='$([[ "$VIRTUAL_ENV" ]] && echo "\['$MAGENTA'\][$(basename $VIRTUAL_ENV)]")'
 PS_CONDITIONAL_GIT_BRANCH='$(__git_ps1 "(%s)")'
 PS_CONDITIONAL_EXIT_STATUS='$(if [[ $exitStatus != 0 ]]; then echo "\['$RED'\][$exitStatus]"; fi)'
-PS_LOGIN_AND_PWD="\[$GREEN\]\u@\h\[$NONE\]: \[$YELLOW\]\w"
+PS_LOGIN_AND_PWD="${PS_HOST_COLOR}\u@\h\[$NONE\]: \[$YELLOW\]\w"
 PS_TIMESTAMP="\[$BLUE\][\t]"
 PS_PROMPT_SYMBOL="\[$NONE\]\$ "
 export PS1="${PS_LOGIN_AND_PWD} ${PS_CONDITIONAL_GIT_BRANCH}\n${PS_CONDITIONAL_VIRTUALENV}${PS_TIMESTAMP}${PS_CONDITIONAL_EXIT_STATUS}${PS_PROMPT_SYMBOL}"
@@ -53,7 +54,7 @@ export PATH=$PATH:~/bin:~/bin/disco
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export WORKON_HOME=~/.virtualenvs
 export PROJECT_HOME=~/dev
-export VIRTUALENVWRAPPER_HOOK_DIR=$WORKON_HOME/env_hooks
+#export VIRTUALENVWRAPPER_HOOK_DIR=$WORKON_HOME
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
