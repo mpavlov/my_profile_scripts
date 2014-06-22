@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cmd="multitail"
+
+while [[ $* ]]; do
+  cmd="$cmd -l \"ssh $1 tail -f $2\""
+  shift && shift  # shift 2 fails if there's no second arg, which results in no shift at all
+done
+
+$cmd

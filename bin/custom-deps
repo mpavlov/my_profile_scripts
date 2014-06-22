@@ -1,0 +1,6 @@
+#!/bin/bash
+
+path_to_packages=$VIRTUAL_ENV/lib/python2.7/site-packages
+project_name=$(basename $VIRTUAL_ENV)
+ls -1 "$path_to_packages"/*.egg-link | xargs basename -a -s .egg-link | grep -v "${project_name//_/-}"
+
