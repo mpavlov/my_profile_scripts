@@ -1,0 +1,13 @@
+*
+!*bash*
+!*git*
+!*term*
+!*vim*
+.*_history
+*.bak
+.bashrc
+
+*/
+!bin/
+
+
