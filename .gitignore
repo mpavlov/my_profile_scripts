@@ -3,6 +3,7 @@
 !*git*
 !*term*
 !*vim*
+.viminfo
 .*_history
 *.bak
 .bashrc
