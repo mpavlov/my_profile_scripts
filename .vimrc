@@ -42,6 +42,15 @@ set paste
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 
+
+""""""""""""""
+" Automation "
+""""""""""""""
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
 """"""""""""""""
 " Key bindings "
 """"""""""""""""
