@@ -37,6 +37,8 @@ alias source_bash_profile='source ~/.bash_profile'
 alias refresh_dns_cache='sudo killall -HUP mDNSResponder'
 alias pwdworkon='VENV=$(basename "$PWD") && ((lsvirtualenv -b | grep "$VENV") || mkvirtualenv "$VENV") && workon "$VENV"'
 #alias portopen='sudo /sbin/iptables -I INPUT -p tcp -j ACCEPT --dport'  # centos only?
+alias mongod='mongod --config /usr/local/etc/mongod.conf'
+alias ipynb='cd ~/src/my_ipython_notebooks && pwdworkon && ipython notebook'
 
 # general dev paths
 export GITHUB_HOST=github.wgenhq.net
