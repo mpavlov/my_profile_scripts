@@ -70,8 +70,8 @@ highlight() {
   cat - | perl -pe "s/${1:-ø}/$BLACK_ON_YELLOW$&$NONE/g" | perl -pe "s/${2:-ø}/$BLACK_ON_CYAN$&$NONE/g" | perl -pe "s/${3:-ø}/$BLACK_ON_RED$&$NONE/g"
 }
 
-# conda
+# conda - enable if you use it
 #PATH=$HOME/anaconda/bin:$PATH
 
-# ssh agent
-[[ "$SSH_CLIENT" ]] || ssh-add ~/.ssh/id_rsa
+# ssh agent - enable if you tunnel often
+#[[ "$SSH_CLIENT" ]] || ssh-add ~/.ssh/id_rsa
