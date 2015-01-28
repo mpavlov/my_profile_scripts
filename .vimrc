@@ -18,6 +18,8 @@ highlight search ctermbg=brown ctermfg=black
 set list  " show whitespace
 set listchars=tab:>.,trail:.,extends:#,nbsp:.  " highlight problematic whitespace
 
+autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby  " vagrantfile is ruby
+
 """"""""""
 " Indent "
 """"""""""
