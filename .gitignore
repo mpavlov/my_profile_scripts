@@ -5,6 +5,7 @@
 !*vim*
 .viminfo
 .*_history
+.*.swp
 *.bak
 *.backup
 .bashrc
