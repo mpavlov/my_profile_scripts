@@ -19,6 +19,7 @@ set list  " show whitespace
 set listchars=tab:>.,trail:.,extends:#,nbsp:.  " highlight problematic whitespace
 
 autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby  " vagrantfile is ruby
+autocmd BufNewFile,BufRead *.json set ft=json
 
 """"""""""
 " Indent "
