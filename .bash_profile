@@ -13,7 +13,7 @@ NONE="\e[0m"
 
 source ~/.git_completion.bash
 source ~/.git_prompt.sh
-PROMPT_COMMAND='exitStatus=$?; echo -ne "\033]0; ${PWD##*/}\007"'
+PROMPT_COMMAND='exitStatus=$?; echo -ne "\033]0; ${PWD##*/}\007"; '$PROMPT_COMMAND
 PS_HOST_COLOR=$([[ "$SSH_CLIENT" ]] && echo "\[$RED\]" || echo "\[$GREEN\]")
 PS_CONDITIONAL_VIRTUALENV='$([[ "$VIRTUAL_ENV" ]] && echo "\['$MAGENTA'\][$(basename $VIRTUAL_ENV)]")'
 PS_CONDITIONAL_GIT_BRANCH='$(__git_ps1 "(%s)")'
@@ -34,14 +34,14 @@ alias dush='du -sh *'
 alias tailf='less -S +F'
 alias vim_bash_profile='vim ~/.bash_profile'
 alias source_bash_profile='source ~/.bash_profile'
-alias refresh_dns_cache='sudo discoveryutil udnsflushcaches'  # as of OSX Yosemite
+alias refresh_dns_cache='sudo killall -HUP mDNSResponder'  # as of OSX 10.10.4
 alias pwdworkon='VENV=$(basename "$PWD") && ((lsvirtualenv -b | grep "$VENV") || mkvirtualenv "$VENV") && workon "$VENV"'
+alias ossh='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes'
 #alias portopen='sudo /sbin/iptables -I INPUT -p tcp -j ACCEPT --dport'  # centos only?
 alias mongod='mongod --config /usr/local/etc/mongod.conf'
 alias ipynb='cd ~/src/my_ipython_notebooks && pwdworkon && ipython notebook'
 
 # general dev paths
-export GITHUB_HOST=github.wgenhq.net
 export PYNEST=/opt/wgen/
 #export PYTHONSTARTUP=~/.pystartup  # enable if startup scripts desired
 export PYTHONPATH=~/bin/python
@@ -56,18 +56,25 @@ export PATH=$PATH:~/bin:~/bin/disco
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export WORKON_HOME=~/.virtualenvs
 export PROJECT_HOME=~/dev
-#export VIRTUALENVWRAPPER_HOOK_DIR=$WORKON_HOME  # no longer needed in new version of virtualenv?
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && source "/usr/local/bin/virtualenvwrapper.sh"
 
-# ruby rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# boot2docker exports
+export D=192.168.59.103
+export DOCKER_HOST=tcp://${D}:2376
+export DOCKER_CERT_PATH=/Users/mpavlov/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
 
 # helper functions
 highlight() {
   cat - | perl -pe "s/${1:-ø}/$BLACK_ON_YELLOW$&$NONE/g" | perl -pe "s/${2:-ø}/$BLACK_ON_CYAN$&$NONE/g" | perl -pe "s/${3:-ø}/$BLACK_ON_RED$&$NONE/g"
+}
+
+forever() {
+  local delay=$1; shift
+  while True; do $@; echo -n "┈"; sleep $delay; echo "┈┈"; done
 }
 
 # conda - enable if you use it
@@ -75,3 +82,8 @@ highlight() {
 
 # ssh agent - enable if you tunnel often
 #[[ "$SSH_CLIENT" ]] || ssh-add ~/.ssh/id_rsa
+
+# rbenv stuff
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+

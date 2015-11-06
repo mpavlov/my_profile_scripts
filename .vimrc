@@ -1,9 +1,5 @@
 set nocompatible
 
-if has("mouse")
-  set mouse=a
-endif
-
 """"""""""
 " Colors "
 """"""""""
