@@ -35,7 +35,7 @@ alias tailf='less -S +F'
 alias vim_bash_profile='vim ~/.bash_profile'
 alias source_bash_profile='source ~/.bash_profile'
 alias refresh_dns_cache='sudo killall -HUP mDNSResponder'  # as of OSX 10.10.4
-alias pwdworkon='VENV=$(basename "$PWD") && ((lsvirtualenv -b | grep "$VENV") || mkvirtualenv "$VENV") && workon "$VENV"'
+alias pwdworkon='VENV=$(basename "$PWD") && ((lsvirtualenv -b | grep "^$VENV\$") || mkvirtualenv "$VENV") && workon "$VENV"'
 alias ossh='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes'
 #alias portopen='sudo /sbin/iptables -I INPUT -p tcp -j ACCEPT --dport'  # centos only?
 alias mongod='mongod --config /usr/local/etc/mongod.conf'
