@@ -4,6 +4,7 @@
 !*term*
 !*vim*
 .viminfo
+.gitconfig.personal
 .*_history
 .*.swp
 *.bak
