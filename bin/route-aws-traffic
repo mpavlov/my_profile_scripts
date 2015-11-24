@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Routes today's AWS IP ranges via the network interface $1
+#
+# OSX tip: if you put this file at /etc/ppp/ip-up and make it executable it will run every time the VPN connection is established
+
+function add_cidr {
+  local cidr="$1"
+  local iface="$2"
+  echo "${iface}: Adding $cidr"
+  /sbin/route add "$cidr" -interface "$iface"
+}
+
+function get_aws_cidrs {
+  curl -sS "https://ip-ranges.amazonaws.com/ip-ranges.json" | grep ip_prefix | cut -d\" -f4
+}
+
+function main {
+  local iface="$1"
+  for cidr in $(get_aws_cidrs); do
+    add_cidr "$cidr" "$iface"
+  done
+}
+
+main "$1"
