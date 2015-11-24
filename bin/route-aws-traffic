@@ -3,6 +3,7 @@
 # Routes today's AWS IP ranges via the network interface $1
 #
 # OSX tip: if you put this file at /etc/ppp/ip-up and make it executable it will run every time the VPN connection is established
+# e.g., sudo ln -s ${HOME}/bin/route-aws-traffic /etc/ppp/ip-up
 
 function add_cidr {
   local cidr="$1"
