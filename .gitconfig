@@ -17,14 +17,14 @@
     frag = magenta
     old = red
     new = green
-    whitespace = normal
+    whitespace = cyan reverse
 
 [color "status"]
     added = yellow
     changed = green
     untracked = cyan
 
-[alias]
+[alias] 
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
 
 [push]
