@@ -42,10 +42,8 @@ alias mongod='mongod --config /usr/local/etc/mongod.conf'
 alias ipynb='cd ~/src/my_ipython_notebooks && pwdworkon && ipython notebook'
 
 # general dev paths
-export PYNEST=/opt/wgen/
-#export PYTHONSTARTUP=~/.pystartup  # enable if startup scripts desired
+#export PYTHONSTARTUP=~/.pystartup  # enable for startup scripts
 export PYTHONPATH=~/bin/python
-export PIP_FIND_LINKS='http://packages.wgenhq.net/pynest'
 
 # PATH
 export PATH=/usr/local/bin:$PATH
