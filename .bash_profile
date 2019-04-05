@@ -1,3 +1,9 @@
+source ~/.bash_aliases
+
+export HISTCONTROL=ignoredups:erasedups  # avoid duplicates in shell history
+export HISTSIZE=1000000  # limit number of commands in history
+shopt -s histappend  # when the shell exits, append to the history file instead of overwriting it
+
 export CLICOLOR=1
 export CLICOLOR_FORCE=1
 WHITE_ON_RED="\e[0;37;41m"
@@ -24,46 +30,13 @@ PS_PROMPT_SYMBOL="\[$NONE\]\$ "
 export PS1="${PS_LOGIN_AND_PWD} ${PS_CONDITIONAL_GIT_BRANCH}\n${PS_CONDITIONAL_VIRTUALENV}${PS_TIMESTAMP}${PS_CONDITIONAL_EXIT_STATUS}${PS_PROMPT_SYMBOL}"
 
 export LSCOLORS="dxgxcxfxcxegedhbagacad"  # for osx ls
-alias vless="vim -u ~/.vimrc.less -"
 export LESS='-R'
 
-# personal aliases
-alias grep='grep --color=auto'
-alias tree='tree -CA'
-alias dush='du -sh *'
-alias tailf='less -S +F'
-alias vim_bash_profile='vim ~/.bash_profile'
-alias source_bash_profile='source ~/.bash_profile'
-alias refresh_dns_cache='sudo killall -HUP mDNSResponder'  # as of OSX 10.10.4
-alias pwdworkon='VENV=$(basename "$PWD") && ((lsvirtualenv -b | grep "^$VENV\$") || mkvirtualenv "$VENV") && workon "$VENV"'
-alias ossh='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes'
-#alias portopen='sudo /sbin/iptables -I INPUT -p tcp -j ACCEPT --dport'  # centos only?
-alias mongod='mongod --config /usr/local/etc/mongod.conf'
-alias ipynb='cd ~/src/my_ipython_notebooks && pwdworkon && ipython notebook'
-
-# general dev paths
-#export PYTHONSTARTUP=~/.pystartup  # enable for startup scripts
 export PYTHONPATH=~/bin/python
 
 # PATH
-export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/bin
-export PATH=$PATH:~/bin:~/bin/disco
-
-# virtualenv and wrapper
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-export WORKON_HOME=~/.virtualenvs
-export PROJECT_HOME=~/dev
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
-[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && source "/usr/local/bin/virtualenvwrapper.sh"
-
-# boot2docker exports
-export D=192.168.59.103
-export DOCKER_HOST=tcp://${D}:2376
-export DOCKER_CERT_PATH=/Users/mpavlov/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
+export PATH=$PATH:~/bin
 
 # helper functions
 highlight() {
@@ -75,13 +48,17 @@ forever() {
   while True; do $@; echo -n "┈"; sleep $delay; echo "┈┈"; done
 }
 
-# conda - enable if you use it
-#PATH=$HOME/anaconda/bin:$PATH
-
-# ssh agent - enable if you tunnel often
-#[[ "$SSH_CLIENT" ]] || ssh-add ~/.ssh/id_rsa
-
-# rbenv stuff
+# rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+# nvm
+export NVM_DIR="/Users/milen/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+# gcloud
+source '/Users/milen/Applications/google-cloud-sdk/path.bash.inc'
+source '/Users/milen/Applications/google-cloud-sdk/completion.bash.inc'
+
+# jenv
+export JAVA_HOME=$(/usr/libexec/java_home)
+eval "$(jenv init -)"

@@ -24,11 +24,16 @@
     changed = green
     untracked = cyan
 
-[alias] 
+[alias]
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
 
 [push]
-    default = current
+    # https://stackoverflow.com/a/948397/3717369
+    default = simple
+
+[branch]
+    autosetupmerge = always
 
 [core]
     pager = less -F -X -R
+    editor = /usr/bin/vim
