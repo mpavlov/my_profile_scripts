@@ -28,8 +28,7 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
 
 [push]
-    # https://stackoverflow.com/a/948397/3717369
-    default = simple
+    default = current
 
 [branch]
     autosetupmerge = always
