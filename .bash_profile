@@ -36,7 +36,7 @@ export PYTHONPATH=~/bin/python
 
 # PATH
 export PATH=$PATH:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/bin
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:~/go/bin/
 
 # helper functions
 highlight() {

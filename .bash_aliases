@@ -8,3 +8,9 @@ alias pwdworkon='VENV=$(basename "$PWD") && ((lsvirtualenv -b | grep "^$VENV\$")
 alias ssh='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes'
 alias ipynb='cd ~/src/my_ipython_notebooks && pwdworkon && ipython notebook'
 alias vless="vim -u ~/.vimrc.less -"
+alias kc=kubectl
+alias source_kubectl_bash_completion="source <(kubectl completion bash)"
+
+uid() {
+  echo $(jhurl -s services.guc3 "hm://userdata/account?username=$1" --service s4a-service -p | jq -r .[0].user_id)
+}
