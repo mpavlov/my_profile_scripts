@@ -22,7 +22,7 @@ autocmd BufNewFile,BufRead *.json set ft=json
 " Indent "
 """"""""""
 " switch on filetype detection and load indent file (indent.vim) for specific file types
-filetype indent on
+filetype plugin indent on
 filetype on
 set autoindent  " copy indent from the row above
 set smartindent  " smart indent
